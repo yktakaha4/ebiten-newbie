@@ -19,7 +19,9 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"github.com/hajimehoshi/ebiten/v2/examples/resources/images"
 	"image"
 	_ "image/png"
@@ -57,6 +59,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	op.GeoM.Translate(screenWidth/2, screenHeight/2)
 	i := (g.count / 5) % frameNum
 	sx, sy := frameOX+i*frameWidth, frameOY
+	ebitenutil.DebugPrint(screen, fmt.Sprintf("sx=%v sy=%v", sx, sy))
 	screen.DrawImage(runnerImage.SubImage(image.Rect(sx, sy, sx+frameWidth, sy+frameHeight)).(*ebiten.Image), op)
 }
 
