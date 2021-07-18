@@ -17,14 +17,15 @@ func init() {
 	}
 }
 
-type Game struct {}
+type Game struct{}
 
 func (g *Game) Update() error {
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	screen.DrawImage(img, nil)
+	options := ebiten.DrawImageOptions{}
+	screen.DrawImage(img, &options)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
